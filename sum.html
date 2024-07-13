@@ -1,0 +1,22 @@
+<script>
+    let company = {
+sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 600}],
+development: {
+    web: [{name: 'Peter', salary: 2000}, {name: 'Alex', salary: 1800}],
+    internals: [{name: 'Jack', salary: 1300}]
+},
+legal: [{name: 'Francheska', salary: 500}, {name: 'Alex', salary: 1500}],
+accounting: [{name: 'Lucy', salary: 6000}, {name: 'Hanna', salary: 129}, {name: 'Khristof', salary: 4500}],
+managers: [{name: 'Ketty', salary: 8550}]
+};
+
+function calculateSalary(departments){
+    if(Array.isArray(departments)){
+    return departments.reduce((sum, employee) => sum + employee.salary, 0)
+    }
+     return Object.values(departments).reduce((sum, subDep) => sum + calculateSalary(subDep), 0)
+}
+
+let totalSalary = calculateSalary(company)
+console.log(totalSalary)
+</script>
